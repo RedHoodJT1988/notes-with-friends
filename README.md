@@ -19,3 +19,4 @@ npm run dev
 The commands above will change into the notes-with-friends
 directory, then install all of the dependencies needed, finally
 run the application in development mode with monitoring turned on.
+The app runs on Heroku.
