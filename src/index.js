@@ -1,4 +1,6 @@
 const express = require('express');
+const depthLimit = require('graphql-depth-limit');
+const { createComplexityLimitRule } = require('graphql-validation-complexity');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -40,6 +42,7 @@ const getUser = token => {
 const server = new ApolloServer({ 
     typeDefs, 
     resolvers,
+    validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
     context: ({ req }) => {
         // get the user token from the headers
         const token = req.headers.authorization;
